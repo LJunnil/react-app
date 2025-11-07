@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 
 function ListGroup() {
-  const items = [
+  let items = [
     "Philippines",
     "Finland",
     "Sweden",
@@ -11,14 +11,19 @@ function ListGroup() {
   ];
 
   return (
-    <Fragment>
+    <>
       <h1>List</h1>
+
+      {items.length === 0 && <p>No item found</p>}
       <ul className="list-group">
         {items.map((item) => (
-          <li>{item}</li>
+          <li className="list-group-item" key={item}>
+            {" "}
+            {item}
+          </li>
         ))}
       </ul>
-    </Fragment>
+    </>
   );
 }
 export default ListGroup;
