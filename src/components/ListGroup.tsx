@@ -1,14 +1,14 @@
-import { Fragment } from "react";
+import { useState } from "react";
 
 function ListGroup() {
-  let items = [
+  const items = [
     "Philippines",
     "Finland",
     "Sweden",
     "Norway",
     "Denmark",
     "Germany",
-    "italy",
+    "Italy",
     "Spain",
     "Portugal",
     "Greece",
@@ -35,16 +35,26 @@ function ListGroup() {
     "Estonia",
   ];
 
+  //  useState should be called correctly
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
   return (
     <>
       <h1>List</h1>
 
       {items.length === 0 && <p>No item found</p>}
-      {}
+
       <ul className="list-group">
-        {items.map((item) => (
-          <li className="list-group-item" key={item}>
-            {" "}
+        {items.map((item, index) => (
+          <li
+            key={item}
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
+            onClick={() => setSelectedIndex(index)} // ✅ use setSelectedIndex
+          >
             {item}
           </li>
         ))}
@@ -52,4 +62,5 @@ function ListGroup() {
     </>
   );
 }
+
 export default ListGroup;
