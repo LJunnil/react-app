@@ -1,48 +1,17 @@
 import { useState } from "react";
 
-function ListGroup() {
-  const items = [
-    "Philippines",
-    "Finland",
-    "Sweden",
-    "Norway",
-    "Denmark",
-    "Germany",
-    "Italy",
-    "Spain",
-    "Portugal",
-    "Greece",
-    "France",
-    "Netherlands",
-    "Belgium",
-    "Switzerland",
-    "Austria",
-    "Czech Republic",
-    "Poland",
-    "Hungary",
-    "Slovakia",
-    "Slovenia",
-    "Croatia",
-    "Serbia",
-    "Romania",
-    "Bulgaria",
-    "Turkey",
-    "Russia",
-    "Ukraine",
-    "Belarus",
-    "Lithuania",
-    "Latvia",
-    "Estonia",
-  ];
+interface Props {
+  items: string[];
+  heading: string;
+}
 
-  //  useState should be called correctly
+function ListGroup({ items, heading }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
     <>
-      <h1>List</h1>
-
-      {items.length === 0 && <p>No item found</p>}
+      <h1>{heading}</h1>
+      {items.length === 0 && <p>No items found</p>}
 
       <ul className="list-group">
         {items.map((item, index) => (
@@ -53,7 +22,7 @@ function ListGroup() {
                 ? "list-group-item active"
                 : "list-group-item"
             }
-            onClick={() => setSelectedIndex(index)} // ✅ use setSelectedIndex
+            onClick={() => setSelectedIndex(index)}
           >
             {item}
           </li>
