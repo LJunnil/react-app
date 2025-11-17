@@ -30,9 +30,6 @@ function App() {
     "Russia",
     "Ukraine",
     "Belarus",
-    "Lithuania",
-    "Latvia",
-    "Estonia",
   ];
 
   return (
